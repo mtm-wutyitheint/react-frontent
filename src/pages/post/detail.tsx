@@ -11,7 +11,6 @@ import { fetchPostsFailure, fetchPostsRequest, fetchPostsSuccess } from '../../a
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-
 const PostDetail = (props: { posts: any, dispatch: Dispatch<any> }) => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -52,25 +51,6 @@ const PostDetail = (props: { posts: any, dispatch: Dispatch<any> }) => {
   }
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" className='app-bar'>
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={handleBack}
-            >
-              <BackIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Create Post
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Box>
       <div className='container'>
         <div className='data-show'>
           <img className='detail-img' src={require('../../static/images/rainbow.png')} alt="Description of the image" />

@@ -5,9 +5,7 @@ import { addPost } from '../../actions/action';
 import '../post/style.css';
 import { useNavigate } from "react-router-dom";
 
-import { AppBar, Toolbar, IconButton, Typography, Button, TextField } from '@mui/material';
-import BackIcon from '@mui/icons-material/ArrowBack';
-import { Box } from '@mui/system';
+import { Button, TextField } from '@mui/material';
 import axios from 'axios';
 
 interface AddPostProps {
@@ -44,34 +42,11 @@ const CreatePost = (props: AddPostProps) => {
     navigate('/post/list');
   }
 
-  const handleBack = () => {
-    navigate('/post/list');
-  }
-
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" className='app-bar'>
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={handleBack}
-            >
-              <BackIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Create Post
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <div className='container'>
+      <div className='container' style={{ width: '500px'}}>
         <h2>Create Post</h2>
-        <form style={{ display: 'contents' }} onSubmit={handleSubmit}>
+        <form style={{ display: 'contents'}} onSubmit={handleSubmit}>
           <TextField
             type="text"
             variant='outlined'

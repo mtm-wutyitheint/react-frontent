@@ -23,21 +23,20 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import { fetchPostsFailure, fetchPostsRequest, fetchPostsSuccess } from '../../actions/action';
 import axios from 'axios';
-
+import Chip from '@mui/material/Chip';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const PostList = (props: { posts: any[], dispatch: Dispatch<any> }) => {
   const navigate = useNavigate();
-
-  const handleCreate = () => {
-    navigate('/post/create');
-  }
+  const authToken = localStorage.getItem('jwt');
 
   const handleDetail = (id: number) => {
     navigate(`/post/detail/${id}`);
   }
 
   useEffect(() => {
-    const authToken = localStorage.getItem('jwt');
     if (!authToken) {
       navigate('/auth/login');
     };
@@ -68,22 +67,11 @@ const PostList = (props: { posts: any[], dispatch: Dispatch<any> }) => {
 
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" className='app-bar'>
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Post List
-            </Typography>
-            <Button variant="contained" color="secondary" onClick={handleCreate}>Create</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
       <div className="App">
         <List sx={{ width: '100%', bgcolor: 'background.paper', display: 'contents' }}>
           {props.posts.length && props.posts.map(i => (
             <div key={i._id}>
               <ListItem
-
                 alignItems="flex-start" onClick={() => handleDetail(i.id)} style={{ cursor: 'pointer' }}>
                 <ListItemAvatar>
                   <Avatar alt="Remy Sharp" src={require('../../static/images/rainbow.png')} />
@@ -91,9 +79,11 @@ const PostList = (props: { posts: any[], dispatch: Dispatch<any> }) => {
                 <ListItemText
                   className="list-item"
                   primary={i.title}
-                  secondary={
+                  secondary={<React.Fragment>
                     <span className='list-item'>{i.content}</span>
+                  </React.Fragment>
                   } />
+                <Chip label="Angular" size="small" />
               </ListItem>
               <div style={{ display: "flex", justifyContent: "end" }}>
                 <IconButton aria-label="add to favorites">
@@ -113,7 +103,6 @@ const PostList = (props: { posts: any[], dispatch: Dispatch<any> }) => {
 }
 
 const mapStateToProps = (state: { data: [] }) => {
-  console.log('sttttttttttttttt', state)
   return {
     posts: state.data ? state.data : []
   }
