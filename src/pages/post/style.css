@@ -1,0 +1,43 @@
+.App {
+    width: 800px !important;
+    margin: 40px 80px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.list-item {
+    display: block;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+.custom-textfield {
+    display: block !important;
+    max-width: 800px !important;
+    /* Set the desired width using CSS */
+    border: 1px solid #ccc;
+    /* Add a border for styling */
+}
+
+.app-bar {
+    background-color: darkgray !important;
+}
+
+.detail-img {
+    width: 150px;
+    height: 150px;
+}
+
+.data-show {
+    width: 800px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    word-break: break-all;
+}
